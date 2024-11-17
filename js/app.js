@@ -3,6 +3,7 @@ const resetButton = document.querySelector('main button');
 
 const namesDialog = document.querySelector('.names-dialog');
 const namesDialogButton = namesDialog.querySelector('button');
+const Counter = document.querySelector('score');
 
 const Player = (name, symbol) => {
     const getSymbol = () => symbol;

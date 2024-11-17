@@ -158,9 +158,9 @@ dialog::backdrop {
 
 .names-dialog p.title {
     grid-column: 1 / -1;
-
-   font-size: 2.5rem;
-   font-weight: 700;
+    color: rgb(0, 7, 52);
+    font-size: 2.5rem;
+    font-weight: 700;
 }
 
 .names-dialog p.player-name {
@@ -170,24 +170,23 @@ dialog::backdrop {
 
     font-size: 1.3rem;
     font-weight: 500;
-    color: #333;
+    color: #1a32a6;
 }
 
 .names-dialog input {
     width: 230px;
-    padding: 5px;
-    border: 2px solid #333;
+    padding: 7px;
+    border: 2px solid #1a32a6;
     border-radius: 5px;
     font-size: 1rem;
 }
 
 .names-dialog button {
     grid-column: 1 / -1;
-
-    margin-top: 25px;
-    padding: 25px 70px;
+    margin-top: 20px;
+    padding: 15px 50px;
     background-color: rgb(4, 142, 4);
-    border: 0.5px solid black;
+    border: 0.5px solid rgb(52, 248, 98);
     border-radius: 10px;
     font: inherit;
     font-size: 1.4rem;
@@ -196,20 +195,23 @@ dialog::backdrop {
 }
 
 .names-dialog button:hover {
-    background-color: rgb(4, 142, 4);
+    background-color: rgb(0, 82, 0);
 }
 
 @media screen and (max-width: 600px) {
     .names-dialog {
         top: 100px;
     }
+
     .names-dialog form {
         row-gap: 40px;
         grid-template-columns: 1fr;
     }
+
     .names-dialog p.title {
         font-size: clamp(1.5rem, 8vw, 2.2rem);
     }
+
     .names-dialog button {
         padding-inline: 60px;
         font-size: 1.2rem;
