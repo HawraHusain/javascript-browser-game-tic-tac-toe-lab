@@ -34,7 +34,6 @@ body {
     user-select: none;
 }
 
-/* HEADER */
 
 header {
     padding-top: 30px;
@@ -56,9 +55,7 @@ header h1:hover {
     background-color: var(--EXTRA-LIGHT-COLOR);
 }
 
-/* MAIN */
-
-main p {
+main .turn-indicator {
     margin-bottom: 20px;
     text-align: center;
     font-size: var(--TURN-MSG-FS);
@@ -74,26 +71,38 @@ main .gameboard {
     background-color: var(--LIGHT-COLOR);
 
     display: grid;
-    gap: 3px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    border: 5px solid;
+    animation: rainbow 5s infinite; 
 }
-
-.gameboard .gamecell {
-    border: 2px solid black;
+/* Add rainbow border animation */
+@keyframes rainbow {
+    0% { border-color: red; }
+    14% { border-color: orange; }
+    28% { border-color: yellow; }
+    42% { border-color: green; }
+    57% { border-color: blue; }
+    71% { border-color: indigo; }
+    85% { border-color: violet; }
+    100% { border-color: red; }
+}
+.gameboard .tile {
     font-size: var(--PLAYER-SYMBOL-FS);
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: lightgray;
+    font-size: 4rem;
 }
 
-.gameboard .gamecell:hover {
+.gameboard .tile:hover {
     background-color: var(--EXTRA-LIGHT-COLOR);
 }
 
-main button {
+main .reset-btn {
     display: block;
     font: inherit;
     font-size: 1.2rem;
@@ -106,11 +115,10 @@ main button {
     cursor: pointer;
 }
 
-main button:hover {
+main .reset-btn:hover {
     background-color: var(--EXTRA-LIGHT-COLOR);
 }
 
-/* DIALOG */
 
 dialog {
     position: fixed;
@@ -123,14 +131,13 @@ dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* --- RESULT DIALOG */
 
-.result-dialog {
+.game-result-dialog {
     top: 300px;
     left: calc(50% - (var(--RESULT-DIALOG-WIDTH) / 2));
 }
 
-.result-dialog h1 {
+.game-result-dialog h1 {
     padding: 70px 10px;
     width: var(--RESULT-DIALOG-WIDTH);
     text-align: center;
@@ -138,14 +145,13 @@ dialog::backdrop {
     font-weight: 700;
 }
 
-/* --- NAMES DIALOG */
 
-.names-dialog {
+.name-entry-dialog {
     top: 200px;
     left: calc(50% - (var(--NAMES-DIALOG-WIDTH) / 2));
 }
 
-.names-dialog form {
+.name-entry-dialog form {
     padding: 50px 0 70px 0;
     width: var(--NAMES-DIALOG-WIDTH);
 
@@ -156,14 +162,14 @@ dialog::backdrop {
     justify-items: center;
 }
 
-.names-dialog p.title {
+.name-entry-dialog .dialog-title {
     grid-column: 1 / -1;
     color: rgb(0, 7, 52);
     font-size: 2.5rem;
     font-weight: 700;
 }
 
-.names-dialog p.player-name {
+.name-entry-dialog .player-input {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -173,7 +179,7 @@ dialog::backdrop {
     color: #1a32a6;
 }
 
-.names-dialog input {
+.name-entry-dialog input {
     width: 230px;
     padding: 7px;
     border: 2px solid #1a32a6;
@@ -181,7 +187,7 @@ dialog::backdrop {
     font-size: 1rem;
 }
 
-.names-dialog button {
+.name-entry-dialog .submit-names-btn {
     grid-column: 1 / -1;
     margin-top: 20px;
     padding: 15px 50px;
@@ -194,38 +200,36 @@ dialog::backdrop {
     cursor: pointer;
 }
 
-.names-dialog button:hover {
+.name-entry-dialog .submit-names-btn:hover {
     background-color: rgb(0, 82, 0);
 }
 
 @media screen and (max-width: 600px) {
-    .names-dialog {
+    .name-entry-dialog {
         top: 100px;
     }
 
-    .names-dialog form {
+    .name-entry-dialog form {
         row-gap: 40px;
         grid-template-columns: 1fr;
     }
 
-    .names-dialog p.title {
+    .name-entry-dialog .dialog-title {
         font-size: clamp(1.5rem, 8vw, 2.2rem);
     }
 
-    .names-dialog button {
+    .name-entry-dialog .submit-names-btn {
         padding-inline: 60px;
         font-size: 1.2rem;
     }
 }
-
-/* FOOTER */
-
-footer {
-    position: absolute;
-    bottom: 15px;
-    width: 100%;
-    text-align: center;
-    color: black;
-    font-size: var(--FOOTER-FS);
-    user-select: text;
+.score {
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
 }
+.score p {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
